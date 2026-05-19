@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wenley Tech</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0c0c0c;
+  --white:#f8f8f6;
+  --text:#111111;
+  --muted:#1e1e1e;
+  --soft:#2a2a2a;
+  --border:rgba(0,0,0,0.11);
+  --green:#1a3a2a;
+  --green-mid:#2d6b4a;
+  --green-light:#5aa876;
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.3rem 3.5rem;background:rgba(12,12,12,0.97);backdrop-filter:blur(14px)}
+.logo{font-family:'DM Sans',sans-serif;font-weight:500;font-size:.9rem;letter-spacing:.22em;text-transform:uppercase;color:#f8f8f6;text-decoration:none}
+.logo span{color:var(--green-light)}
+nav ul{list-style:none;display:flex;gap:2.5rem;align-items:center}
+nav ul a{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(248,248,246,.6);text-decoration:none;transition:color .2s}
+nav ul a:hover{color:#f8f8f6}
+
+/* HERO */
+.hero{height:100vh;position:relative;display:flex;align-items:flex-end;padding:0 3.5rem 5rem;overflow:hidden;background:var(--black)}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0c1f16 0%,#0c0c0c 65%);z-index:0}
+.hero-bg::after{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 60px,rgba(255,255,255,.013) 60px,rgba(255,255,255,.013) 61px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(255,255,255,.013) 60px,rgba(255,255,255,.013) 61px)}
+.hero-accent{position:absolute;top:8rem;right:3.5rem;width:300px;border:.5px solid rgba(255,255,255,.08);z-index:1;padding:2rem 2.5rem}
+.hero-accent-label{font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(248,248,246,.5);margin-bottom:1.5rem}
+.hstat{border-top:.5px solid rgba(255,255,255,.07);padding:.9rem 0}
+.hstat:first-of-type{border-top:none;padding-top:0}
+.hstat-n{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;color:#f8f8f6;line-height:1}
+.hstat-l{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(248,248,246,.65);margin-top:.2rem}
+.hero-content{position:relative;z-index:2;max-width:600px}
+.eyebrow{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green-light);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.eyebrow::before{content:'';display:block;width:2rem;height:.5px;background:var(--green-light)}
+h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,5.5vw,4.8rem);line-height:1.08;color:#f8f8f6;margin-bottom:1.75rem}
+h1 em{font-style:italic}
+.hero-sub{font-size:.98rem;color:rgba(248,248,246,.88);max-width:460px;line-height:1.85;margin-bottom:2.5rem;font-weight:400}
+.hero-actions{display:flex;gap:1rem;align-items:center}
+.btn-primary{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#f8f8f6;background:var(--green-mid);padding:.85rem 2rem;border-radius:2px;text-decoration:none;transition:background .2s;display:inline-block}
+.btn-primary:hover{background:var(--green)}
+.btn-ghost{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(248,248,246,.5);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .2s}
+.btn-ghost:hover{color:#f8f8f6}
+.btn-ghost::after{content:'→';transition:transform .2s}
+.btn-ghost:hover::after{transform:translateX(4px)}
+
+/* WHAT WE DO */
+.what{background:var(--black);display:grid;grid-template-columns:repeat(3,1fr)}
+.what-item{padding:3rem 3.5rem;border-right:.5px solid rgba(255,255,255,.07)}
+.what-item:last-child{border-right:none}
+.what-num{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.8rem;color:var(--green-light);margin-bottom:1rem}
+.what-title{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#f8f8f6;font-weight:500;margin-bottom:.7rem}
+.what-desc{font-size:.9rem;color:rgba(248,248,246,.82);line-height:1.8;font-weight:400}
+
+/* PLATFORMS */
+.platforms{display:grid;grid-template-columns:1fr 1fr}
+.platform{position:relative;height:540px;display:flex;flex-direction:column;justify-content:flex-end;padding:3.5rem;text-decoration:none;color:inherit;overflow:hidden}
+.plat-bg{position:absolute;inset:0;z-index:0;transition:transform .5s}
+.platform:hover .plat-bg{transform:scale(1.03)}
+.platform-a .plat-bg{background:linear-gradient(160deg,#0d1f17 0%,#1a2e22 40%,#0c0c0c 100%)}
+.platform-b .plat-bg{background:linear-gradient(160deg,#111827 0%,#1c2333 40%,#0c0c0c 100%)}
+.plat-bg::after{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(255,255,255,.01) 40px,rgba(255,255,255,.01) 41px)}
+.plat-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.08) 65%);z-index:1}
+.plat-content{position:relative;z-index:2}
+.plat-tag{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(248,248,246,.7);margin-bottom:1rem;display:block}
+.plat-name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.8rem;color:#f8f8f6;line-height:1.05;margin-bottom:1rem}
+.plat-desc{font-size:.9rem;color:rgba(248,248,246,.88);line-height:1.8;max-width:400px;margin-bottom:2rem;font-weight:400}
+.plat-link{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green-light);display:inline-flex;align-items:center;gap:.6rem;transition:gap .2s}
+.platform:hover .plat-link{gap:1rem}
+.plat-divider{position:absolute;top:0;bottom:0;right:0;width:.5px;background:rgba(255,255,255,.08);z-index:3}
+.plat-wm{position:absolute;top:2.5rem;right:3rem;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:7rem;color:rgba(255,255,255,.04);line-height:1;z-index:1;user-select:none}
+
+/* VERIFY BAR */
+.verify-bar{background:#111;padding:2.25rem 3.5rem;display:flex;gap:3rem;align-items:center;border-top:.5px solid rgba(255,255,255,.06);border-bottom:.5px solid rgba(255,255,255,.06);overflow-x:auto}
+.vcheck{display:flex;align-items:center;gap:.6rem;white-space:nowrap}
+.vcheck-dot{width:5px;height:5px;border-radius:50%;background:var(--green-light);flex-shrink:0}
+.vcheck span{font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(248,248,246,.75)}
+
+/* WHY IT MATTERS */
+.why{padding:7rem 3.5rem;background:var(--white)}
+.why-header{max-width:580px;margin-bottom:5rem}
+.section-label{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green-mid);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.section-label::before{content:'';display:block;width:1.5rem;height:.5px;background:var(--green-mid)}
+h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,3.5vw,3rem);line-height:1.12;color:var(--text);margin-bottom:1.25rem}
+h2 em{font-style:italic;color:var(--green-mid)}
+.why-header p{font-size:.98rem;color:var(--muted);line-height:1.9;font-weight:500}
+
+/* STAT GRID */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:5rem}
+.stat-box{background:#f2f2ee;padding:2.5rem 2rem}
+.stat-box-n{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.8rem;line-height:1;color:var(--text);margin-bottom:.5rem}
+.stat-box-n span{font-size:1.6rem}
+.stat-box-l{font-size:.7rem;letter-spacing:.08em;color:#222;line-height:1.5;font-weight:500}
+
+/* CONTEXT BLOCKS */
+.context-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.context-block{padding:3rem;background:#f2f2ee}
+.context-block.dark{background:var(--black)}
+.context-num{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.2rem;color:var(--green-light);margin-bottom:1.25rem}
+.context-title{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text);font-weight:500;margin-bottom:.75rem}
+.context-block.dark .context-title{color:#f8f8f6}
+.context-body{font-size:.92rem;color:var(--muted);line-height:1.85;font-weight:500}
+.context-block.dark .context-body{color:rgba(248,248,246,.82)}
+
+/* ABOUT */
+.about{padding:7rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.about-text p{font-size:.95rem;color:var(--muted);line-height:1.9;margin-bottom:1.25rem;font-weight:500}
+.about-photo{width:100%;height:520px;object-fit:cover;object-position:center top;display:block}
+.cred-card{background:var(--black);padding:2rem 2.5rem}
+.cred-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.75rem;padding-bottom:1.25rem;border-bottom:.5px solid rgba(255,255,255,.08)}
+.cred-name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.5rem;color:#f8f8f6}
+.cred-sub{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(248,248,246,.55);margin-top:.25rem}
+.cred-badge{background:var(--green-mid);color:#f8f8f6;font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;padding:.35rem .8rem;border-radius:2px;font-weight:500;white-space:nowrap}
+.cred-row{display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-bottom:.5px solid rgba(255,255,255,.08)}
+.cred-row:last-of-type{border-bottom:none}
+.cred-label{font-size:.7rem;color:rgba(248,248,246,.72)}
+.cred-label small{display:block;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(248,248,246,.4);margin-top:.1rem}
+.cred-status{font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+.status-clear{color:var(--green-light)}
+.status-ok{color:rgba(248,248,246,.7)}
+.cred-footer{margin-top:1.25rem;padding-top:1rem;border-top:.5px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center}
+.cred-footer span{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(248,248,246,.5)}
+.live-dot{display:flex;align-items:center;gap:.4rem;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green-light)}
+.live-dot::before{content:'';display:block;width:5px;height:5px;border-radius:50%;background:var(--green-light);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* CLOSING */
+.closing{padding:6rem 3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;border-top:.5px solid var(--border)}
+.closing-left p{font-size:.95rem;color:var(--muted);line-height:1.9;font-weight:500;max-width:400px}
+.closing-contact{margin-top:1.5rem;font-size:.8rem;color:var(--soft)}
+.closing-contact a{color:var(--muted);text-decoration:none;border-bottom:.5px solid var(--border);padding-bottom:1px;transition:color .2s}
+.closing-contact a:hover{color:var(--text)}
+.closing-right{display:flex;flex-direction:column;gap:1.25rem}
+.platform-link-card{display:flex;align-items:center;justify-content:space-between;padding:1.75rem 2rem;border:.5px solid var(--border);text-decoration:none;color:inherit;transition:border-color .25s,background .25s}
+.platform-link-card:hover{border-color:rgba(0,0,0,.25);background:rgba(0,0,0,.02)}
+.plc-name{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.4rem;color:var(--text);margin-bottom:.3rem}
+.plc-tag{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#444}
+.plc-arrow{font-size:1.1rem;color:var(--green-mid);transition:transform .2s}
+.platform-link-card:hover .plc-arrow{transform:translateX(5px)}
+
+/* FOOTER */
+footer{border-top:.5px solid var(--border);padding:3.5rem 3.5rem 2rem}
+.footer-top{display:grid;grid-template-columns:1fr 2fr;gap:5rem;margin-bottom:3rem}
+.footer-logo{font-family:'DM Sans',sans-serif;font-weight:500;font-size:.9rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text);margin-bottom:.75rem}
+.footer-logo span{color:var(--green-mid)}
+.footer-desc{font-size:.78rem;color:#222;line-height:1.7;max-width:260px;font-weight:500;margin-bottom:1.25rem}
+.footer-linkedin{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green-mid);text-decoration:none;transition:color .2s}
+.footer-linkedin:hover{color:var(--green)}
+.footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.footer-col{display:flex;flex-direction:column;gap:.6rem}
+.footer-col-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#333;font-weight:500;margin-bottom:.3rem}
+.footer-col a{font-size:.78rem;color:#111;text-decoration:none;transition:color .2s;font-weight:500}
+.footer-col a:hover{color:var(--green-mid)}
+.footer-bottom{border-top:.5px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;gap:2rem}
+.footer-bottom p{font-size:.68rem;color:#111;letter-spacing:.04em;font-weight:500}
+
+/* ANIMATE */
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  nav{padding:1.2rem 1.5rem}
+  nav ul{display:none}
+  .hero{padding:0 1.5rem 4rem}
+  .hero-accent{display:none}
+  .what,.platforms,.about,.closing,.context-grid{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:1fr 1fr}
+  .what-item{border-right:none;border-bottom:.5px solid rgba(255,255,255,.07)}
+  .platform{height:460px}
+  .about,.closing,.why{padding:4rem 1.5rem}
+  .about{gap:3rem}
+  .verify-bar{gap:1.5rem;padding:2rem 1.5rem}
+  footer{padding:3rem 1.5rem 2rem}
+  .footer-top{grid-template-columns:1fr;gap:2.5rem}
+  .footer-cols{grid-template-columns:1fr 1fr;gap:2rem}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Wenley<span> Tech</span></a>
+  <ul>
+    <li><a href="#why">Why It Matters</a></li>
+    <li><a href="#platforms">Platforms</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-accent">
+    <div class="hero-accent-label">Wenley Tech</div>
+    <div class="hstat">
+      <div class="hstat-n">7</div>
+      <div class="hstat-l">Verification Checks</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-n">Live</div>
+      <div class="hstat-l">Continuous Monitoring</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-n">2</div>
+      <div class="hstat-l">Flagship Platforms</div>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow">Provider Verification &amp; Compliance</div>
+    <h1>Provider verification<br>and compliance for<br><em>health and wellness.</em></h1>
+    <p class="hero-sub">Two platforms. BeautyJar and BackBeam Network. Built to support provider verification, compliance monitoring, and patient trust in modern wellness care.</p>
+    <div class="hero-actions">
+      <a href="#why" class="btn-primary">Why It Matters</a>
+      <a href="#platforms" class="btn-ghost">Our Platforms</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<div class="what">
+  <div class="what-item fade-up">
+    <div class="what-num">01</div>
+    <div class="what-title">Provider Verification</div>
+    <p class="what-desc">We check licenses, OIG status, DEA registration, NPDB history, and board certification — and keep a record of it.</p>
+  </div>
+  <div class="what-item fade-up">
+    <div class="what-num">02</div>
+    <div class="what-title">Ongoing Monitoring</div>
+    <p class="what-desc">Monthly checks so practices always have current, documented compliance records — not just a one-time snapshot.</p>
+  </div>
+  <div class="what-item fade-up">
+    <div class="what-num">03</div>
+    <div class="what-title">Patient Discovery</div>
+    <p class="what-desc">Verified providers are listed on BeautyJar, where patients looking for GLP-1, hormone therapy, and aesthetic care can find them.</p>
+  </div>
+</div>
+
+<!-- WHY IT MATTERS -->
+<section id="why" class="why">
+  <div class="why-header fade-up">
+    <div class="section-label">Why It Matters</div>
+    <h2>The industry is growing<br>faster than its<br><em>oversight.</em></h2>
+    <p>GLP-1 medications — Ozempic, Wegovy, Mounjaro, Zepbound — have fundamentally changed what patients expect from health and wellness practices. Medspas, IV clinics, and hormone therapy providers are multiplying to meet that demand. The question of who's actually qualified to administer these treatments is one most patients never think to ask.</p>
+  </div>
+
+  <div class="stat-grid fade-up">
+    <div class="stat-box">
+      <div class="stat-box-n">$21<span>B</span></div>
+      <div class="stat-box-l">Global medspa market in 2025, growing at 13.7% annually</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-n">60<span>%</span></div>
+      <div class="stat-box-l">Of US medspas now offer GLP-1 treatments — up from a fraction just two years ago</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-n">4</div>
+      <div class="stat-box-l">Approved GLP-1 medications now on the market, with more in the pipeline</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-box-n">40<span>%</span></div>
+      <div class="stat-box-l">Of GLP-1 patients at medspas in 2024 were brand new to that practice</div>
+    </div>
+  </div>
+
+  <div class="context-grid fade-up">
+    <div class="context-block">
+      <div class="context-num">The Opportunity</div>
+      <div class="context-title">A new patient base, fast</div>
+      <p class="context-body">GLP-1 medications have brought an entirely new category of patient into aesthetic and wellness practices. Practices that added GLP-1 services in 2024 saw revenue grow by an average of 9% — compared to a 2% decline at those that didn't. Weight loss treatments are now the fourth largest non-surgical aesthetics segment in the US. The growth is real, and it's not slowing down.</p>
+    </div>
+    <div class="context-block dark">
+      <div class="context-num">The Gap</div>
+      <div class="context-title">Growth without guardrails</div>
+      <p class="context-body">With that growth comes a problem. New practices are opening constantly to meet demand, and patients have no easy way to know whether a provider is properly licensed, credentialed, or in good standing. There's no central standard, no public badge, no quick answer. That's the gap BeautyJar and BackBeam were built to address — on the patient side and the practice side.</p>
+    </div>
+  </div>
+
+  <div class="cred-card fade-up" style="margin-top:2px">
+    <div class="cred-header">
+      <div>
+        <div class="cred-name">Dr. Jennifer Caldwell, MD</div>
+        <div class="cred-sub">Medical Director · Georgia · NPI 1234567890</div>
+      </div>
+      <div class="cred-badge">Verified</div>
+    </div>
+    <div class="cred-row">
+      <div class="cred-label">State Medical License<small>Georgia Composite Medical Board</small></div>
+      <div class="cred-status status-clear">Active — Clear</div>
+    </div>
+    <div class="cred-row">
+      <div class="cred-label">OIG Exclusion Status<small>HHS OIG LEIE</small></div>
+      <div class="cred-status status-ok">No Match</div>
+    </div>
+    <div class="cred-row">
+      <div class="cred-label">Federal Debarment<small>GSA SAM.gov</small></div>
+      <div class="cred-status status-ok">No Match</div>
+    </div>
+    <div class="cred-row">
+      <div class="cred-label">NPDB History<small>HRSA NPDB</small></div>
+      <div class="cred-status status-ok">No Report</div>
+    </div>
+    <div class="cred-row">
+      <div class="cred-label">NPI Registry<small>CMS NPPES</small></div>
+      <div class="cred-status status-clear">Active</div>
+    </div>
+    <div class="cred-row">
+      <div class="cred-label">DEA Registration<small>DEA Diversion Control</small></div>
+      <div class="cred-status status-clear">Active</div>
+    </div>
+    <div class="cred-row">
+      <div class="cred-label">Board Certification<small>ABMS · CertificationMatters</small></div>
+      <div class="cred-status status-clear">Active</div>
+    </div>
+    <div class="cred-footer">
+      <span>Verified April 2, 2026 · 09:14 AM ET</span>
+      <div class="live-dot">Live Monitoring</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<div id="platforms" class="platforms fade-up">
+  <a href="https://beautyjar.com" target="_blank" class="platform platform-a">
+    <div class="plat-bg"></div>
+    <div class="plat-overlay"></div>
+    <div class="plat-wm">01</div>
+    <div class="plat-divider"></div>
+    <div class="plat-content">
+      <span class="plat-tag">Consumer · Provider Directory</span>
+      <h3 class="plat-name">BeautyJar</h3>
+      <p class="plat-desc">A directory of verified women's care providers — GLP-1, hormone therapy, medical aesthetics, and wellness. Every provider listed has been checked and credentialed.</p>
+      <span class="plat-link">Visit BeautyJar.com →</span>
+    </div>
+  </a>
+  <a href="https://backbeamnetwork.com" target="_blank" class="platform platform-b">
+    <div class="plat-bg"></div>
+    <div class="plat-overlay"></div>
+    <div class="plat-wm">02</div>
+    <div class="plat-content">
+      <span class="plat-tag">B2B · Credentialing &amp; Compliance</span>
+      <h3 class="plat-name">BackBeam Network</h3>
+      <p class="plat-desc">A credentialing and compliance tool for medspas, IV clinics, hormone therapy practices, and aesthetic groups. Monthly monitoring with documented audit trails.</p>
+      <span class="plat-link">Visit BackBeamNetwork.com →</span>
+    </div>
+  </a>
+</div>
+
+<!-- VERIFY BAR -->
+<div class="verify-bar">
+  <div class="vcheck"><div class="vcheck-dot"></div><span>State Medical License</span></div>
+  <div class="vcheck"><div class="vcheck-dot"></div><span>OIG Exclusion Status</span></div>
+  <div class="vcheck"><div class="vcheck-dot"></div><span>Federal Debarment</span></div>
+  <div class="vcheck"><div class="vcheck-dot"></div><span>NPDB History</span></div>
+  <div class="vcheck"><div class="vcheck-dot"></div><span>NPI Registry</span></div>
+  <div class="vcheck"><div class="vcheck-dot"></div><span>DEA Registration</span></div>
+  <div class="vcheck"><div class="vcheck-dot"></div><span>Board Certification</span></div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-text fade-up">
+    <div class="section-label">About</div>
+    <h2>What we<br><em>built.</em></h2>
+    <p>Wenley Tech is the parent company behind BeautyJar and BackBeam Network — two platforms focused on provider verification and compliance in the health and wellness space.</p>
+    <p>BeautyJar helps patients find providers who have been checked and verified. BackBeam helps practices stay current on credentialing and maintain the documentation to prove it.</p>
+    <p>Both platforms are focused on the same fast-growing space: GLP-1 clinics, medspas, hormone therapy practices, and medical aesthetics providers across the US.</p>
+  </div>
+  <img src="about-photo.jpg" alt="Wenley Tech" class="about-photo fade-up">
+</section>
+
+<!-- CLOSING -->
+<section id="contact" class="closing fade-up">
+  <div class="closing-left">
+    <div class="section-label">Our Platforms</div>
+    <h2>Two platforms.<br><em>One focus.</em></h2>
+    <p>Visit either platform to learn more. For general questions, feel free to reach out.</p>
+    <p class="closing-contact"><a href="mailto:hello@wenleytech.com">hello@wenleytech.com</a></p>
+  </div>
+  <div class="closing-right">
+    <a href="https://beautyjar.com" target="_blank" class="platform-link-card">
+      <div>
+        <div class="plc-name">BeautyJar</div>
+        <div class="plc-tag">Verified Women's Care Network</div>
+      </div>
+      <div class="plc-arrow">→</div>
+    </a>
+    <a href="https://backbeamnetwork.com" target="_blank" class="platform-link-card">
+      <div>
+        <div class="plc-name">BackBeam Network</div>
+        <div class="plc-tag">Credentialing Verification Organization</div>
+      </div>
+      <div class="plc-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Wenley<span> Tech</span></div>
+      <p class="footer-desc">Healthcare-adjacent trust infrastructure.<br>Provider verification and compliance for health and wellness.</p>
+      <a href="https://www.linkedin.com/company/wenley-technologies/" target="_blank" class="footer-linkedin" aria-label="Wenley Technologies on LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-col-label">Platforms</div>
+        <a href="https://beautyjar.com" target="_blank">BeautyJar.com</a>
+        <a href="https://backbeamnetwork.com" target="_blank">BackBeam Network</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Legal</div>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-label">Contact</div>
+        <a href="mailto:hello@wenleytech.com">hello@wenleytech.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Wenley Tech LLC. All rights reserved.</p>
+    <p>Wenley Tech is a holding company. BeautyJar and BackBeam Network are independent platforms.</p>
+  </div>
+</footer>
+
+<script>
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.08});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
