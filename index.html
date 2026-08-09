@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wenley Technologies | GRC & Cybersecurity Compliance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16181b;
+    --muted: #000000;
+    --muted-light: #1a1a1a;
+    --white: #ffffff;
+    --bg-soft: #f7f7f4;
+    --line: #e3e1d8;
+    --slate: #1f2e3d;
+    --amber: #a5741f;
+    --amber-bg: #a5741f14;
+    --green: #2f6b48;
+    --green-bg: #2f6b4814;
+    --red: #9c4234;
+    --red-bg: #9c423414;
+
+    --serif: "IBM Plex Serif", Georgia, serif;
+    --sans: "IBM Plex Sans", -apple-system, sans-serif;
+    --mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--white);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+  img { max-width: 100%; display: block; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  /* ===== NAV ===== */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.96);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px; max-width: 1120px; margin: 0 auto;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px; text-decoration: none;
+    font-family: var(--serif); font-weight: 700; font-size: 19px; color: var(--ink);
+  }
+  .logo-mark {
+    width: 30px; height: 30px; border: 1.5px solid var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--sans); font-size: 12px; font-weight: 700; flex-shrink: 0;
+  }
+  nav.links { display: flex; gap: 30px; font-size: 14.5px; font-weight: 500; }
+  nav.links a {
+    text-decoration: none; color: var(--muted);
+    padding-bottom: 2px; border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  nav.links a:hover { color: var(--ink); border-color: var(--amber); }
+  .nav-cta {
+    display: inline-block; font-size: 14px; font-weight: 600;
+    padding: 10px 18px; border: 1px solid var(--ink);
+    text-decoration: none; color: var(--ink);
+    transition: background 0.15s ease, color 0.15s ease; white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--ink); color: var(--white); }
+
+  /* ===== HERO ===== */
+  .hero { padding: 72px 0 64px; border-bottom: 1px solid var(--line); }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center;
+  }
+  .eyebrow {
+    font-size: 13.5px; font-weight: 600; letter-spacing: 0.03em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 22px;
+  }
+  h1.hero-headline {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(34px, 4.6vw, 54px); line-height: 1.12;
+    letter-spacing: -0.01em; margin: 0 0 22px; color: var(--ink);
+  }
+  .hero-sub { font-size: 17.5px; font-weight: 600; color: var(--muted); max-width: 52ch; margin: 0 0 34px; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+  .btn-primary {
+    font-weight: 600; font-size: 14.5px; padding: 14px 24px;
+    background: var(--ink); color: var(--white); text-decoration: none;
+    border: 1px solid var(--ink); transition: background 0.15s ease;
+  }
+  .btn-primary:hover { background: var(--slate); }
+  .btn-secondary {
+    font-weight: 600; font-size: 14.5px; padding: 14px 24px;
+    background: transparent; color: var(--ink); text-decoration: none;
+    border: 1px solid var(--line); transition: border-color 0.15s ease;
+  }
+  .btn-secondary:hover { border-color: var(--ink); }
+
+  .hero-meta { display: flex; gap: 40px; border-top: 1px solid var(--line); padding-top: 22px; flex-wrap: wrap; }
+  .hero-meta dt { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-light); margin-bottom: 5px; }
+  .hero-meta dd { margin: 0; font-size: 15px; font-weight: 600; color: var(--ink); }
+
+  .hero-image { border-radius: 4px; overflow: hidden; border: 1px solid var(--line); }
+  .hero-image img { width: 100%; height: 420px; object-fit: cover; }
+
+  /* ===== SECTION SCAFFOLDING ===== */
+  section { padding: 76px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+  section.alt { background: var(--bg-soft); }
+  .section-head { margin-bottom: 44px; max-width: 62ch; }
+  .section-head.with-media { display: grid; grid-template-columns: 1.2fr 1fr; gap: 44px; align-items: center; max-width: none; }
+  .section-head.with-media .section-head-text { max-width: 46ch; }
+  .section-media { border-radius: 4px; overflow: hidden; border: 1px solid var(--line); }
+  .section-media img { width: 100%; height: 220px; object-fit: cover; }
+  .section-label {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 10px; display: block;
+  }
+  h2.section-title {
+    font-family: var(--serif); font-size: clamp(25px, 2.8vw, 33px);
+    font-weight: 700; margin: 0; color: var(--ink);
+  }
+  .section-note { font-size: 15.5px; font-weight: 600; color: var(--muted); margin-top: 12px; }
+
+  /* ===== CONTROL LEDGER ===== */
+  .ledger { border: 1px solid var(--line); background: var(--white); }
+  .ledger-row {
+    display: grid; grid-template-columns: 150px 1fr 140px; gap: 20px; align-items: center;
+    padding: 17px 22px; border-bottom: 1px solid var(--line);
+  }
+  .ledger-row:last-child { border-bottom: none; }
+  .ledger-row.head {
+    font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--muted-light); background: var(--bg-soft);
+  }
+  .control-id { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--slate); }
+  .control-name { font-size: 14.5px; color: var(--ink); }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600;
+    padding: 5px 11px; border-radius: 100px; width: fit-content;
+  }
+  .status-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; }
+  .status-implemented { background: var(--green-bg); color: var(--green); }
+  .status-implemented::before { background: var(--green); }
+  .status-progress { background: var(--amber-bg); color: var(--amber); }
+  .status-progress::before { background: var(--amber); }
+  .status-planned { background: var(--red-bg); color: var(--red); }
+  .status-planned::before { background: var(--red); }
+  .ledger-caption { font-size: 14px; color: var(--muted-light); margin-top: 16px; }
+
+  /* ===== SERVICES GRID ===== */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .service-card { background: var(--white); padding: 28px 26px; display: flex; flex-direction: column; gap: 10px; border-top: 2px solid var(--amber); }
+  .service-card h3 { font-family: var(--serif); font-size: 18.5px; font-weight: 700; margin: 0; color: var(--ink); }
+  .service-card p { font-size: 14.5px; font-weight: 600; color: var(--muted); margin: 0; line-height: 1.55; }
+
+  /* ===== APPROACH ===== */
+  .approach-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .approach-card { background: var(--white); padding: 32px 30px; display: flex; flex-direction: column; gap: 12px; }
+  .approach-card h3 { font-family: var(--serif); font-size: 19px; font-weight: 700; margin: 0; color: var(--ink); }
+  .approach-card p { margin: 0; color: var(--muted); font-size: 15px; font-weight: 600; line-height: 1.6; }
+
+  /* ===== LEADERSHIP ===== */
+  .leadership-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .leader-card { display: flex; gap: 20px; align-items: flex-start; }
+  .avatar {
+    width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-weight: 700; font-size: 20px; color: var(--white);
+    background: var(--slate);
+  }
+  .avatar.alt { background: var(--amber); }
+  .leader-name { font-family: var(--serif); font-size: 18px; font-weight: 700; margin: 0 0 2px; color: var(--ink); }
+  .leader-title { font-size: 13.5px; font-weight: 600; color: var(--amber); margin: 0 0 10px; }
+  .leader-bio { font-size: 14.5px; font-weight: 600; color: var(--muted); margin: 0; line-height: 1.6; }
+  .leadership-note { font-size: 15px; font-weight: 600; color: var(--muted); max-width: 68ch; margin: 36px 0 0; padding-top: 28px; border-top: 1px solid var(--line); }
+
+  /* ===== COMPANY DETAILS (toned down) ===== */
+  .details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .details-col h4 { font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted-light); margin: 0 0 14px; }
+  .details-col ul { list-style: none; margin: 0; padding: 0; }
+  .details-col li { font-size: 14.5px; font-weight: 600; padding: 7px 0; border-bottom: 1px solid var(--line); color: var(--ink); }
+  .details-col li:last-child { border-bottom: none; }
+  .details-col .naics-code { font-family: var(--mono); font-weight: 600; font-size: 13px; color: var(--muted); margin-right: 8px; }
+  .status-note {
+    margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line);
+    font-size: 14.5px; font-weight: 600; color: var(--muted); max-width: 68ch;
+  }
+
+  /* ===== CONTACT ===== */
+  .contact-section { padding: 88px 0; }
+  .contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; }
+  .contact-headline {
+    font-family: var(--serif); font-size: clamp(27px, 3.4vw, 38px); font-weight: 700;
+    line-height: 1.18; margin: 0 0 18px; color: var(--ink);
+  }
+  .contact-copy { color: var(--muted); font-size: 15.5px; font-weight: 600; max-width: 42ch; }
+  .contact-card { border: 1px solid var(--line); background: var(--bg-soft); padding: 34px; }
+  .contact-row { display: flex; flex-direction: column; gap: 4px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+  .contact-row:first-child { padding-top: 0; }
+  .contact-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .contact-row label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted-light); }
+  .contact-row a, .contact-row span { font-size: 17px; text-decoration: none; color: var(--ink); font-weight: 600; }
+  .contact-row a:hover { color: var(--amber); }
+
+  /* ===== FOOTER ===== */
+  footer { background: var(--ink); color: #b7b5ab; padding: 30px 0; font-size: 13.5px; }
+  .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  footer a { color: #d9d7cc; text-decoration: none; }
+  footer a:hover { color: var(--white); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-image img { height: 280px; }
+    .services-grid, .approach-grid { grid-template-columns: 1fr; }
+    .details-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+    .leadership-grid { grid-template-columns: 1fr; gap: 28px; }
+  }
+  @media (max-width: 640px) {
+    .wrap, .nav-inner { padding-left: 20px; padding-right: 20px; }
+    nav.links { display: none; }
+    .ledger-row { grid-template-columns: 1fr; gap: 8px; padding: 16px 18px; }
+    .ledger-row.head { display: none; }
+    .details-grid { grid-template-columns: 1fr; }
+    section { padding: 52px 0; }
+    .hero { padding: 48px 0 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo"><span class="logo-mark">WT</span>Wenley Technologies</a>
+    <nav class="links">
+      <a href="#leadership">Team</a>
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Start a conversation</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero" style="border-top:none;">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">GRC &amp; Cybersecurity Compliance Services</p>
+        <h1 class="hero-headline">Compliance that holds up under audit.</h1>
+        <p class="hero-sub">Wenley Technologies helps federal agencies and prime contractors close compliance gaps &mdash; CMMC, NIST 800-171, and audit-ready GRC programs &mdash; backed by a vetted team of practitioners.</p>
+        <div class="hero-actions">
+          <a href="mailto:hello@backbeamnetwork.com" class="btn-primary">Email us</a>
+          <a href="tel:2025799801" class="btn-secondary">202-579-9801</a>
+        </div>
+        <dl class="hero-meta">
+          <div>
+            <dt>Based in</dt>
+            <dd>Silver Spring, MD</dd>
+          </div>
+          <div>
+            <dt>Founded</dt>
+            <dd>2024</dd>
+          </div>
+          <div>
+            <dt>Ownership</dt>
+            <dd>Service-Disabled Veteran-owned</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1758518730178-6e237bc8b87d?auto=format&fit=crop&w=1200&q=80" alt="Compliance team reviewing documents in a meeting" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+<section id="leadership" class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">Leadership</span>
+        <h2 class="section-title">The people leading Wenley also do the work.</h2>
+      </div>
+      <div class="section-media" style="height:260px; margin-bottom:36px;">
+        <img src="https://images.unsplash.com/photo-1736667245201-2eea25a07f55?auto=format&fit=crop&w=1400&q=80" alt="Team working at a desk on a compliance engagement" loading="lazy" style="height:260px;">
+      </div>
+      <div class="leadership-grid">
+        <div class="leader-card">
+          <div class="avatar">NO</div>
+          <div>
+            <p class="leader-name">N. Ruby Osei</p>
+            <p class="leader-title">VP, Business Development &amp; Operations</p>
+            <p class="leader-bio">Leads client relationships, teaming partnerships, and day-to-day operations, with a background in governance, risk, and compliance.</p>
+          </div>
+        </div>
+        <div class="leader-card">
+          <div class="avatar alt">MP</div>
+          <div>
+            <p class="leader-name">Managing Partner</p>
+            <p class="leader-title">Service-Disabled Veteran &middot; Owner</p>
+            <p class="leader-bio">Holds ownership and day-to-day decision-making authority for the company, overseeing strategy, contracts, and compliance quality.</p>
+          </div>
+        </div>
+      </div>
+      <p class="leadership-note">Wenley is advised by disabled veterans who proudly served their country, and who now bring that same discipline and experience to how we run the company.</p>
+    </div>
+  </section>
+
+<section id="services">
+    <div class="wrap">
+      <div class="section-head with-media">
+        <div class="section-head-text">
+          <span class="section-label">Core competencies</span>
+          <h2 class="section-title">Six ways we close the gap between policy and practice.</h2>
+        </div>
+        <div class="section-media">
+          <img src="https://images.unsplash.com/photo-1758873268745-dd2cf0d677b5?auto=format&fit=crop&w=1000&q=80" alt="Team reviewing compliance work together on a laptop" loading="lazy">
+        </div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>CMMC Readiness</h3>
+          <p>Level 1/2 gap assessments and remediation planning ahead of a C3PAO assessment.</p>
+        </div>
+        <div class="service-card">
+          <h3>SSP &amp; POA&amp;M Development</h3>
+          <p>NIST SP 800-171 / 800-53 System Security Plans and Plans of Action &amp; Milestones, built control by control.</p>
+        </div>
+        <div class="service-card">
+          <h3>GRC Program Design</h3>
+          <p>Risk assessments and continuous compliance monitoring built around how your team actually works.</p>
+        </div>
+        <div class="service-card">
+          <h3>Audit Preparation</h3>
+          <p>C3PAO coordination and evidence packages assembled before the assessor asks for them.</p>
+        </div>
+        <div class="service-card">
+          <h3>Policy &amp; Control Documentation</h3>
+          <p>Policies and procedures written to map directly to the frameworks they're audited against.</p>
+        </div>
+        <div class="service-card">
+          <h3>Compliance Staff Augmentation</h3>
+          <p>Credentialed GRC and cybersecurity specialists placed directly against your task order requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">What "ready" looks like</span>
+        <h2 class="section-title">Every engagement starts with the control matrix.</h2>
+        <p class="section-note">A sample of the control-level work behind a CMMC Level 2 / NIST SP 800-171 assessment.</p>
+      </div>
+      <div class="ledger">
+        <div class="ledger-row head">
+          <span>Control ID</span><span>Control</span><span>Status</span>
+        </div>
+        <div class="ledger-row">
+          <span class="control-id">AC.L2-3.1.1</span>
+          <span class="control-name">Limit system access to authorized users</span>
+          <span class="status-pill status-implemented">Implemented</span>
+        </div>
+        <div class="ledger-row">
+          <span class="control-id">IA.L2-3.5.3</span>
+          <span class="control-name">Use multifactor authentication for local and network access</span>
+          <span class="status-pill status-implemented">Implemented</span>
+        </div>
+        <div class="ledger-row">
+          <span class="control-id">AU.L2-3.3.1</span>
+          <span class="control-name">Create and retain system audit logs and records</span>
+          <span class="status-pill status-progress">In progress</span>
+        </div>
+        <div class="ledger-row">
+          <span class="control-id">SC.L2-3.13.11</span>
+          <span class="control-name">Employ FIPS-validated cryptography</span>
+          <span class="status-pill status-progress">In progress</span>
+        </div>
+        <div class="ledger-row">
+          <span class="control-id">CM.L2-3.4.2</span>
+          <span class="control-name">Establish and enforce configuration baselines</span>
+          <span class="status-pill status-planned">Planned</span>
+        </div>
+        <div class="ledger-row">
+          <span class="control-id">IR.L2-3.6.1</span>
+          <span class="control-name">Establish an operational incident-handling capability</span>
+          <span class="status-pill status-planned">Planned</span>
+        </div>
+      </div>
+      <p class="ledger-caption">Illustrative excerpt from a CMMC Level 2 practice set, the same structure we build out for every client SSP and POA&amp;M.</p>
+    </div>
+  </section>
+
+<section id="approach">
+    <div class="wrap">
+      <div class="section-head with-media">
+        <div class="section-head-text">
+          <span class="section-label">Why Wenley</span>
+          <h2 class="section-title">What we bring to a teaming agreement.</h2>
+        </div>
+        <div class="section-media">
+          <img src="https://images.unsplash.com/photo-1633114127824-14b3207d7d74?auto=format&fit=crop&w=1000&q=80" alt="Team meeting to plan a compliance engagement" loading="lazy">
+        </div>
+      </div>
+      <div class="approach-grid">
+        <div class="approach-card">
+          <h3>Veteran-led, veteran-advised</h3>
+          <p>Led by a Service-Disabled Veteran and supported by an advisory team of several disabled veterans who bring decades of service and operational experience.</p>
+        </div>
+        <div class="approach-card">
+          <h3>A vetted talent network</h3>
+          <p>Years of relationships across GRC, cybersecurity, and IT compliance disciplines mean we can staff a task order quickly.</p>
+        </div>
+        <div class="approach-card">
+          <h3>Practitioner-led</h3>
+          <p>Leadership with hands-on GRC and compliance program experience, from control implementation through audit.</p>
+        </div>
+        <div class="approach-card">
+          <h3>Built for teaming</h3>
+          <p>Structured from day one to operate as a subcontractor inside a larger federal contract.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">Company details</span>
+        <h2 class="section-title">The basics, plainly stated.</h2>
+      </div>
+      <div class="details-grid">
+        <div class="details-col">
+          <h4>Company</h4>
+          <ul>
+            <li>Entity &mdash; LLC</li>
+            <li>Founded &mdash; 2024</li>
+            <li>UEI &mdash; pending SAM.gov</li>
+            <li>CAGE &mdash; pending SAM.gov</li>
+          </ul>
+        </div>
+        <div class="details-col">
+          <h4>NAICS Codes</h4>
+          <ul>
+            <li><span class="naics-code">541611</span>GRC Consulting (Primary)</li>
+            <li><span class="naics-code">541512</span>Computer Systems Design</li>
+            <li><span class="naics-code">541511</span>Custom Computer Programming</li>
+            <li><span class="naics-code">541618</span>Mgmt. Consulting</li>
+            <li><span class="naics-code">541690</span>Other Sci./Tech. Consulting</li>
+          </ul>
+        </div>
+        <div class="details-col">
+          <h4>&nbsp;</h4>
+          <ul>
+            <li><span class="naics-code">541519</span>Other Computer Svcs.</li>
+            <li><span class="naics-code">541990</span>Prof./Sci./Tech. Svcs.</li>
+            <li><span class="naics-code">518210</span>Data Processing/Hosting</li>
+            <li><span class="naics-code">541513</span>Computer Facilities Mgmt.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="status-note">Wenley Technologies is a Service-Disabled Veteran-owned small business. Our SDVOSB certification application is currently in process with the SBA's VetCert program.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section" style="border-bottom:none;">
+    <div class="wrap contact-grid">
+      <div>
+        <h2 class="contact-headline">Let's talk about your compliance gap.</h2>
+        <p class="contact-copy">Whether you're a prime looking for SDVOSB subcontracting support or an agency assessing CMMC readiness, reach out directly.</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-row">
+          <label>Email</label>
+          <a href="mailto:hello@backbeamnetwork.com">hello@backbeamnetwork.com</a>
+        </div>
+        <div class="contact-row">
+          <label>Phone</label>
+          <a href="tel:2025799801">202-579-9801</a>
+        </div>
+        <div class="contact-row">
+          <label>Location</label>
+          <span>Silver Spring, MD 20904</span>
+        </div>
+        <div class="contact-row">
+          <label>Contact</label>
+          <span>N. Ruby Osei, VP Business Development &amp; Operations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>&copy; 2026 Wenley Technologies LLC. All rights reserved.</span>
+    <span><a href="mailto:hello@backbeamnetwork.com">hello@backbeamnetwork.com</a> &middot; Silver Spring, MD</span>
+  </div>
+</footer>
+
+</body>
+</html>
