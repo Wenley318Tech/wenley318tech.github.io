@@ -206,21 +206,8 @@
   .approach-card h3 { font-family: var(--serif); font-size: 19px; font-weight: 700; margin: 0; color: var(--ink); }
   .approach-card p { margin: 0; color: var(--muted); font-size: 15px; font-weight: 600; line-height: 1.6; }
 
-  /* ===== LEADERSHIP ===== */
-  .leadership-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .leader-card { display: flex; gap: 20px; align-items: flex-start; }
-  .avatar {
-    width: 64px; height: 64px; border-radius: 50%; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--serif); font-weight: 700; font-size: 20px; color: var(--white);
-    background: var(--slate);
-  }
-  .avatar.alt { background: var(--amber); }
-  .avatar.network { background: var(--green); font-size: 13px; }
-  .leader-name { font-family: var(--serif); font-size: 18px; font-weight: 700; margin: 0 0 2px; color: var(--ink); }
-  .leader-title { font-size: 13.5px; font-weight: 600; color: var(--amber); margin: 0 0 10px; }
-  .leader-bio { font-size: 14.5px; font-weight: 600; color: var(--muted); margin: 0; line-height: 1.6; }
-  .leadership-note { font-size: 15px; font-weight: 600; color: var(--muted); max-width: 68ch; margin: 36px 0 0; padding-top: 28px; border-top: 1px solid var(--line); }
+  /* ===== ABOUT ===== */
+  .about-copy { font-size: 16.5px; font-weight: 600; color: var(--muted); max-width: 62ch; line-height: 1.7; margin: 0; }
 
   /* ===== COMPANY DETAILS (toned down) ===== */
   .details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
@@ -305,7 +292,6 @@
     .services-grid, .approach-grid { grid-template-columns: 1fr; }
     .details-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-grid { grid-template-columns: 1fr; gap: 36px; }
-    .leadership-grid { grid-template-columns: 1fr; gap: 28px; }
   }
   @media (max-width: 640px) {
     .wrap, .nav-inner { padding-left: 20px; padding-right: 20px; }
@@ -326,7 +312,7 @@
     <nav class="links">
       <a href="#capabilities">Capabilities</a>
       <a href="#contracts">Contracts</a>
-      <a href="#leadership">Team</a>
+      <a href="#about">Company</a>
     </nav>
     <a href="#contact" class="nav-cta">Contact Us</a>
   </div>
@@ -363,27 +349,39 @@
       <div class="services-grid">
         <div class="service-card">
           <h3>Program &amp; Project Support</h3>
-          <p>Project and program professionals who support planning, coordination, documentation, reporting, and day-to-day contract execution.</p>
-          <p class="role-list">Project Managers &middot; Program Analysts &middot; Business Analysts &middot; Project Coordinators &middot; Technical Writers</p>
+          <ul class="detail-list">
+            <li>Project coordination</li>
+            <li>Program analysis</li>
+            <li>Reporting</li>
+            <li>Documentation</li>
+            <li>Schedule and deliverable tracking</li>
+            <li>Technical writing</li>
+          </ul>
+          <p class="role-list">Typical roles: Project Managers, Program Analysts, Business Analysts, Project Coordinators, Technical Writers</p>
         </div>
         <div class="service-card">
           <h3>Cybersecurity &amp; GRC Support</h3>
-          <p>Cybersecurity and compliance professionals who support risk, governance, security documentation, and federal compliance activities.</p>
           <ul class="detail-list">
-            <li>RMF documentation support</li>
+            <li>RMF documentation</li>
             <li>Security control documentation</li>
             <li>SSP and POA&amp;M support</li>
-            <li>NIST SP 800-171 compliance support</li>
-            <li>CMMC readiness support</li>
+            <li>NIST SP 800-171 support</li>
             <li>Evidence collection and organization</li>
             <li>Risk and remediation tracking</li>
-            <li>Assessment preparation</li>
           </ul>
+          <p class="role-list">Typical roles: Cybersecurity Analysts, Compliance Specialists, GRC Analysts</p>
         </div>
         <div class="service-card">
           <h3>IT &amp; End-User Support</h3>
-          <p>Technical professionals who support users, systems, applications, and day-to-day IT operations.</p>
-          <p class="role-list">Help Desk Specialists &middot; Desktop Support &middot; IT Support Specialists &middot; Systems Administrators &middot; Application Support Analysts</p>
+          <ul class="detail-list">
+            <li>Service desk</li>
+            <li>End-user support</li>
+            <li>Desktop support</li>
+            <li>Application support</li>
+            <li>Systems support</li>
+            <li>IT operations</li>
+          </ul>
+          <p class="role-list">Typical roles: Help Desk Specialists, Desktop Support, IT Support Specialists, Systems Administrators, Application Support Analysts</p>
         </div>
       </div>
     </div>
@@ -395,59 +393,16 @@
         <span class="section-label">How We Support Contracts</span>
         <h2 class="section-title">Flexible support for government programs.</h2>
       </div>
-      <div class="approach-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="approach-grid">
         <div class="approach-card">
           <h3>Subcontracting</h3>
           <p>Wenley partners with prime contractors to provide qualified personnel and support for federal contract requirements.</p>
-        </div>
-        <div class="approach-card">
-          <h3>Staff Augmentation</h3>
-          <p>We provide professionals to supplement existing program, cybersecurity, and IT teams.</p>
         </div>
         <div class="approach-card">
           <h3>Project Support</h3>
           <p>Wenley supports defined workstreams, deliverables, and operational requirements.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-<section id="leadership" class="alt">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-label">Leadership</span>
-        <h2 class="section-title">Leadership with hands-on program and compliance experience.</h2>
-      </div>
-      <div class="section-media" style="height:260px; margin-bottom:36px;">
-        <img src="https://images.unsplash.com/photo-1736667245201-2eea25a07f55?auto=format&fit=crop&w=1400&q=80" alt="Team working at a desk on a compliance engagement" loading="lazy" style="height:260px;">
-      </div>
-      <div class="leadership-grid">
-        <div class="leader-card">
-          <div class="avatar">NO</div>
-          <div>
-            <p class="leader-name">N. Ruby Osei</p>
-            <p class="leader-title">VP, Business Development</p>
-            <p class="leader-bio">Leads client relationships, teaming partnerships, and day-to-day operations, with a background in governance, risk, and compliance.</p>
-          </div>
-        </div>
-        <div class="leader-card">
-          <div class="avatar alt">MP</div>
-          <div>
-            <p class="leader-name">Managing Partner</p>
-            <p class="leader-title">Service-Disabled Veteran &middot; Owner</p>
-            <p class="leader-bio">Holds ownership and day-to-day decision-making authority for the company, overseeing strategy, contracts, and compliance quality.</p>
-          </div>
-        </div>
-        <div class="leader-card">
-          <div class="avatar network">ADV</div>
-          <div>
-            <p class="leader-name">Advisory Bench</p>
-            <p class="leader-title">Disabled Veterans &middot; Program, Cyber &amp; IT Practitioners</p>
-            <p class="leader-bio">Veteran advisors and program, cybersecurity, and IT specialists we lean on for staffing and strategic direction.</p>
-          </div>
-        </div>
-      </div>
-      <p class="leadership-note">Wenley is advised by disabled veterans who proudly served their country, and who now bring that same discipline and experience to how we run the company.</p>
     </div>
   </section>
 
@@ -474,6 +429,17 @@
     </div>
   </section>
 
+<section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">About Wenley</span>
+        <h2 class="section-title">About Wenley.</h2>
+      </div>
+      <p class="about-copy">Wenley Technologies is a Maryland-based small business providing program, cybersecurity, compliance, and IT support services to federal agencies and prime contractors. Our focus is on clearly defined contract requirements and practical delivery.</p>
+      <p class="about-copy" style="margin-top: 18px;">Wenley's managing partner is a disabled veteran, and the company draws on the experience of several disabled veterans who advise on strategy and delivery.</p>
+    </div>
+  </section>
+
   <section id="contact" class="contact-section" style="border-bottom:none;">
     <div class="wrap contact-grid">
       <div>
@@ -481,10 +447,10 @@
         <p class="contact-copy">For teaming, subcontracting, and contracting inquiries, contact Wenley.</p>
         <div class="contact-person">
           <p class="person-name">N. Ruby Osei</p>
-          <p class="person-title">Vice President, Business Development</p>
+          <p class="person-title">Director of Compliance</p>
           <p class="person-meta">Silver Spring, Maryland</p>
           <p class="person-meta"><a href="tel:2025799801">202-579-9801</a></p>
-          <a href="#inquiry-form" class="person-cta">Contact Business Development &rarr;</a>
+          <a href="#inquiry-form" class="person-cta">Contact Wenley &rarr;</a>
         </div>
       </div>
       <div class="contact-form-panel" id="inquiry-form">
@@ -510,7 +476,6 @@
             <select id="cf-inquiry-type" name="inquiry_type" required>
               <option value="" disabled selected>Select one</option>
               <option value="Subcontracting">Subcontracting</option>
-              <option value="Staff Augmentation">Staff Augmentation</option>
               <option value="Project Support">Project Support</option>
               <option value="Other">Other</option>
             </select>
